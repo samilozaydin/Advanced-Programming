@@ -86,7 +86,9 @@
     numberim = numberim + 97;
     let newone2 = word.substring(0, 15);
     newone2 = newone2 + numberim;
-    out.innerText = newone2;
+    out.innerText += newone2 + "\n";
+    document.getElementById("kimlik").value = " ";
+    document.getElementById("kimlik").value = newone2;
    }
    function reverse(s) {
     return s.split("").reverse().join("");
@@ -125,7 +127,7 @@
     } else {
      t = verifyIBAN(v) ? "IBAN ✓" : "hatalı";
     }
-    out.innerText += "\n" + v + " " + t;
+    //out.innerText += "\n" + v + " " + t;
     console.log(v, t);
    }
    title.innerText = document.title;
