@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="../images/icon192.png" />
+  <title>List of Objects</title>
+
+  <style>
+   body {
+    max-width: 500px;
+   }
+   #inp {
+    white-space: pre-wrap;
+   }
+   #sample {
+    overflow-x: auto;
+   }
+   #out {
+    color: blue;
+   }
+  </style>
+ </head>
+
+ <body>
+  <h2 id="title"></h2>
+  <b
+   >Text input &emsp;
+   <input type="button" id="convert" value="Convert" onclick="toList()" />
+  </b>
+  <p>
+   <textarea id="inp" rows="10" cols="50"></textarea>
+  </p>
+  <b>JSON output</b>
+  <pre id="out"></pre>
+  <hr />
+  <b>Sample code</b>
+  <pre id="sample"></pre>
+  <hr />
+  <p>
+   Ref:
+   <a
+    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters#Examples"
+    target="NewTab"
+    >Rest Parameters</a
+   >
+  </p>
+
+  <script>
+   "use strict";
+   function toList(str) {
+    function toObject(x) {
+     let b = {};
+     for (let [i, s] of x.split("\t").entries()) {
+      b[keys[i]] = isNaN(s) ? s : Number(s);
+      // console.log(s);
+     }
+     return b;
+    }
+    if (str) inp.value = str;
+    else str = inp.value;
+    let [d0, ...data] = str.split("\n");
+    let keys = d0.split("\t");
+    console.log("Keys:", keys);
+    let a = data.map(toObject);
+    // console.log(a);
+    //out.innerText = JSON.stringify(a, "", 2);
+    // console.log("Executed map function array of object:");
+    //console.table(a);
+    let c = data.map(toObject).filter((x) => x.Sector == "Bilişim");
+    let d = data.map(toObject).map((x) => x.Name + " " + x.Adres);
+    //console.log("Executed filter function array of object:");
+    // console.log(c);
+    //console.table(c);
+    return a;
+   }
+   //   ls = toList();
+   //  ls.filter((x) => x.Sector == "Bilişim");
+   //ls.map((x) =>"Name: "+ x.Nane + " Adres:" + x.Adres)
+   //console.table(ls)
+
+   function toArray(str) {}
+   const PLANET = `Name	Diam	Mass	Radius	Period
+Mercury	0.382	0.06	0.40	0.24
+Venus	0.949	0.82	0.72	0.62
+Earth	1.000	1.00	1.00	1.00
+Mars	0.532	0.11	1.52	1.88
+Jupiter	11.209	317.80	5.20	11.86
+Saturn	9.449	95.20	9.54	29.46
+Uranus	4.007	14.60	19.22	84.01
+Neptune	3.883	17.20	30.06	164.80`,
+    MOUNT = `Website	Location	Nane	Sector	Adres
+Kariyer.net	İstanbul	Mobilion Bilişim	Bilişim	Büyükdere Cad. No:105/4 Gayrettepe - İSTANBUL
+Kariyer.net	İstanbul	Puxo Dijital Deneyimler İletişim Reklamcılık Anonim Şirketi	Bilişim	Koşuyolu Mah. Katip Salih Sokak N.33 Kadıköy İSTANBUL
+Kariyer.net	İstanbul	Motor Aşin Otomotiv	Otomativ	Merkez: Atatürk Mah. İkitelli Cad. No:44 34306 Küçükçekmece/ İSTANBUL
+Kariyer.net	İstanbul	Adecco	İnsan Kaynakları Danışmanlığı	Umut Sokak No:10/12 AND Kozyatağı Kat:14 34752 İçerenköy
+Kariyer.net	İstanbul	ID3 Ltd.şti	Yazılım	YTÜ Davutpaşa Kampüsü. Teknopark. A1 Blok 111. Esenler/İstanbul
+Kariyer.net	İstanbul	TGL Transtas Global Logistics	Ulaşım, Lojistik	Karaağaç Mah. Yiğittürk Cad. No: 22A/1 Büyükçekmece/İstanbul
+Kariyer.net	İstanbul	Viennalife Emeklilik ve Hayat A.Ş.	Sigorta	Kozyatağı Mah. Sarı Kanarya Sokak K2 Plaza No:14 Kat:2 Kadıköy/İstanbul   
+Kariyer.net	İstanbul	Finartz Bilgi Teknolojileri A.Ş.	Bilişim	Prof. Dr. Fahrettin Kerim Günay Cad. No:25/4 Üsküdar/İstanbul
+Kariyer.net	İstanbul	Gözen Digital Aviation	Bilişim	Çobançeşme Mah. Sanayi Cad. Hayat Holding No: 60/85 Bahçelievler /
+
+`;
+
+   title.innerText = document.title;
+   sample.innerText = toList;
+   inp.value = MOUNT;
+   //toList()  //array of objects
+  </script>
+  <script src="/2022/navbar.js"></script>
+ </body>
+</html>
