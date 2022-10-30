@@ -17,19 +17,18 @@ function tableFor(evt) {
 
 function analyze(min = 0) {
     return [...EVENTS]
+        .map(e => ({
+            evt: e,
+            cor: phi(tableFor(e)),
+            amount: Number(tableFor(e)[1]) + Number(tableFor(e)[3])
+        }))
+        .filter(x => Math.abs(x.cor) > Number(inp.value))
+        .map(x => x.evt + ": " + x.cor.toFixed(4) + " " + x.amount)/*[...EVENTS]
         .map(e => ({ evt: e, cor: phi(tableFor(e)) }))
         .filter(x => Math.abs(x.cor) > min)
-        .map(x => x.evt + ": " + x.cor.toFixed(4))
+        .map(x => x.evt + ": " + x.cor.toFixed(4))*/
 
-    /*
-[...EVENTS]
-    .map(e => ({ evt: e,
-         cor: phi(tableFor(e)),
-         amount: Number(tableFor(e)[1])+ Number(tableFor(e)[3])
-        }))
-    .filter(x => Math.abs(x.cor) > Number(inp.value))
-    .map(x => x.evt + ": " + x.cor.toFixed(4) +" "+  x.amount)
-        */
+
 
     /*
 JOURNAL
