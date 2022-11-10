@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png" />
+  <title>My Title</title>
+  <style>
+   /* CSS comment */
+   body {
+    max-width: 440px;
+   }
+   #url {
+    width: 190px;
+   }
+   span,
+   #url {
+    color: blue;
+   }
+  </style>
+ </head>
+
+ <body>
+  <!-- HTML comment: Modify all items marked xxx -->
+
+  <h2 id="title" title="Put your name here"></h2>
+  <span id="batsat"></span>
+  <progress id="batbar" max="100"></progress>
+  <span id="batlev"></span>
+
+  <h2 id="title2" title="Put your name here"></h2>
+  <span id="onlineStatus"></span>
+
+  <h2 id="title3" title="Put your name here"></h2>
+  <span id="selected_key"></span>
+  <hr />
+  <p title="navigator.platform">Platform: <span id="plat"></span></p>
+  <p title="Battery level (integer)">Battery level: <span id="lev"></span></p>
+  <p title="Latitude/Longitude (4 digits)">Location: <span id="loc"></span></p>
+  <p title="Does the URL exist?">
+   URL
+   <input
+    type="url"
+    id="url"
+    value="https://samilozaydin.github.io/Advanced-Programming/"
+    onChange="check()"
+   />
+   <span id="resp"></span>
+  </p>
+  <hr />
+
+  <script>
+   "use strict";
+   function init() {
+    //complete the code below
+    plat.innerText = navigator.platform;
+    navigator.geolocation.getCurrentPosition(
+     (p) =>
+      (loc.innerText =
+       p.coords.latitude.toFixed(4) + ", " + p.coords.longitude.toFixed(4))
+    );
+    navigator
+     .getBattery()
+     .then((b) => (lev.innerText = "%" + (b.level * 100).toFixed(0)));
+    check();
+   }
+   function check() {
+    //complete the code below
+    fetch(url.value)
+     .then(
+      (r) => (resp.innerText = r.ok ? "OK" : r.status + " " + r.statusText)
+     )
+     .catch((e) => (resp.innerText = e));
+   }
+   title.innerText = "Battery Status";
+   title2.innerText = "Online Status";
+   title3.innerText = "Keyboard";
+
+   navigator.getBattery().then((x) => {
+    x.onlevelchange = () => {
+     batlev.innerText = "%" + (x.level * 100).toFixed(0);
+     batbar.value = x.level * 100;
+    };
+    x.onlevelchange();
+
+    x.onchargingchange = () => {
+     batsat.innerText = x.charging ? "Charging..." : "Discharging...";
+    };
+    x.onchargingchange();
+   });
+   onlineStatus.innerText = window.navigator.onLine
+    ? "Connected -- Online"
+    : "Disconnected -- Offline";
+
+   let ononline = () => {
+    onlineStatus.innerText = "Connected -- Online";
+   };
+   let onoffline = () => {
+    onlineStatus.innerText = "Disconnected -- Offline";
+   };
+   window.addEventListener("online", ononline);
+   window.addEventListener("offline", onoffline);
+
+   window.onkeydown = (evt) => {
+    selected_key.innerText = evt.key;
+   };
+   window.onkeyup = (evt) => {};
+   // sample.innerText = init + "\n" + check;
+   init();
+  </script>
+ </body>
+</html>
