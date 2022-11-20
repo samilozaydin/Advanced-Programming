@@ -113,17 +113,19 @@ function pause() {
 
     if (!validator.is_pause_clicked) {
         validator.is_pause_clicked = true;
+        disableButton(false);
+
     } else {
         validator.is_pause_clicked = false;
         validator.is_start_clicked = true;
+        disableButton(true);
     }
 
-    disableButton(false);
 }
 
 function stop() {
     validator.is_start_clicked = false;
-    validator.is_pause_clicked = false;
+    validator.is_pause_clicked = true;
     validator.is_stop_clicked = true;
     disableButton(false);
 }
