@@ -1,0 +1,82 @@
+body{
+    background: linear-gradient(to left, rgb(214, 194, 77),rgb(254, 242, 154));
+    box-sizing: border-box;
+}
+.content{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.borderim{
+    border: 7px;
+    border-color: rgb(175, 162, 173);
+    border-style: solid;
+    border-radius:10px;
+}
+.top-head{
+    height: 120px;
+    background-color: rgb(36, 36, 101);
+    display: block;
+}
+.top-head p{
+    font-size: 35px;
+    text-align: center;
+    padding-top: 20px;
+    margin:0px;
+    color: rgb(122, 161, 161);
+}
+.top-head a{
+    font-size: 25px;
+    text-align:center;
+    display:block;
+    margin:0px;
+    color: rgb(120, 189, 148);
+}
+.top-head hr{
+    width: 75%;
+    display: block;
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid rgb(199, 18, 175);
+}
+.mid{
+    background-color: white;
+    margin-top: 15px;
+    height: 200px;
+}
+.bottom{
+    margin-top: 15px;
+    height: 200px;
+    background-color: wheat;
+    display: flex;
+}
+.bottom div{
+    width: 280px;
+    flex: 1;
+}
+.bottom-left{
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+.bottom-left p{
+    font-weight: bold;
+    font-size: 32px;
+}
+.bottom-right{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.bottom-right button{
+    display: block;
+    margin:5px 0px 5px 0px ;
+    width: 100px;
+    height: 100px;
+}
