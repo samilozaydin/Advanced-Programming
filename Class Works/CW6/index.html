@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/JS/images/JS.png" />
+  <title>GitHub Users</title>
+  <style>
+   body {
+    max-width: 440px;
+   }
+   img {
+    padding-right: 12px;
+    width: 256px;
+   }
+   pre {
+    overflow-x: auto;
+   }
+   #out {
+    color: blue;
+   }
+   #err {
+    color: red;
+   }
+   #repoList {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    color: initial;
+   }
+   #lim {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: smaller;
+   }
+   #repoName{
+    font-size: 24;
+    font-weight: bold;
+   }
+   .containerim{
+    border :5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color:rgb(57 92 73);
+    background: linear-gradient(45deg,rgb(149, 134, 112),rgb(99, 174, 134));
+    text-align: center;
+   }
+   #avatar{
+    display:block;
+    margin-left: auto;
+  margin-right: auto;
+
+   }
+  </style>
+ </head>
+
+ <body>
+  <h2 id="title"></h2>
+  <input type="search" id="usr" value="BLM305" onChange="readUser()" />
+  <p id="out">
+    <div class="containerim">
+   <div><img id="avatar" alt="Avatar for the selected user" /></div>
+   <hr>
+   <div id="repoName"></div>  
+    <div id="repoName2"></div><br />
+    
+    <div id="com"></div>
+    <div id="loc"></div> 
+   <a id="repoLink" target="NewTab"></a><br />
+    </div> 
+</p>
+  <p id="err"></p>
+  <div id="lim" title="Rate used / Rate limit"></div>
+  <hr />
+  <b>Sample code</b>
+  <pre id="sample"></pre>
+  <hr />
+  <p>
+   Ref:
+   <a
+    href="https://docs.github.com/en/rest/reference/rate-limit"
+    target="NewTab"
+    >GitHub API</a
+   >
+   &emsp;
+   <a href="https://blm305.github.io/2021/work/await.html" target="NewTab"
+    >await</a
+   >
+  </p>
+
+  <script>
+   "use strict";
+   function error(e) {
+    err.innerText = e;
+    console.error(e);
+    out.hidden = 1;
+    err.hidden = 0;
+    showRateLimit();
+   }
+   function exception(s) {
+    switch (s) {
+     case 403:
+      throw "Rate limit exceeded";
+     case 404:
+      throw usr.value + " not found";
+     default:
+      throw "Status " + s;
+    }
+   }
+   async function toJSON(url) {
+    try {
+     let r = await fetch(url);
+     if (!r.ok) exception(r.status);
+     return r.json();
+    } catch (e) {
+     error(e);
+    }
+   }
+   async function readUser() {
+    const URL = "https://api.github.com/users/";
+    let u = await toJSON(URL + usr.value);
+    if (!u || !u.login) return;
+    out.hidden = 0;
+    err.hidden = 1;
+    //start with the avatar
+    avatar.src = u.avatar_url;
+    //name and location
+    repoName.innerText = u.name;
+    repoName2.innerText = u.login;
+    //link to GitHub
+    repoLink.href = u.blog;
+    repoLink.innerText = u.blog;
+    loc.innerText = u.location;
+    com.innerText = u.company;
+    console.log(JSON.stringify(u));
+    //repo count and repo names
+    showRateLimit();
+   }
+   async function showRateLimit() {
+    const LIM = "https://api.github.com/rate_limit";
+    let { rate } = await toJSON(LIM);
+    lim.innerText = rate.used + "/" + rate.limit;
+   }
+   title.innerText = document.title;
+   sample.innerText = toJSON + "\n" + readUser;
+   readUser();
+  </script>
+ </body>
+</html>
