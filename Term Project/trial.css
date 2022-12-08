@@ -1,0 +1,38 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.navigator{
+    width: 100vw;
+    height: 5vh;
+    border: 3px solid black;
+}
+.navigator p{
+    text-align: center;
+    padding-top: 0.2vh;
+}
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.block{
+    border: 3px solid orange;
+    width: 10vw;
+    height: 10vh;
+}
+
+.side{
+
+    width: 20vw;
+    height: 100vh;
+    border: 3px solid pink;
+}
+.books{
+    width: 25vw;
+}
+.one-book{
+    max-height: 40vh;
+}
+.one-book > img{
+    max-height: 5vh;
+}
