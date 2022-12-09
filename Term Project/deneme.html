@@ -8,19 +8,20 @@
     </head>
     <body>
         <header>
-            <div class="navigator">
-                <p>There is something in here</p>
+            <div class="navigator color-back">
+                <p>Library Management</p>
             </div>
         </header>
         <main>
             <div class="main-container">
-                <div class="side">
+                <div class="side color-back">
                     <div class="inputs-header">
-                        <p>Searching</p>
+                        <p class="color-back">Searching</p>
                     </div>
                     <div class="inputs-content">
                         <span>Name:</span>
-                        <input type="text" />
+                        <br />
+                        <input class="text-inputs" type="text" />
                         <br />
                         <span>Type:</span>
                         <select name="books" id="books">
@@ -29,18 +30,28 @@
                             <option value="fantastic">Fantastic</option>
                             <option value="love">Love</option>
                         </select>
-                        <button>Search</button>
-                        <br />
+                        <br /><br />
                         <span>Price:</span>
-                        <input type="text" />
+                        <br />
+                        <input
+                            id="txt_price_low"
+                            class="text-inputs price"
+                            type="text"
+                        />
                         <span>-</span>
-                        <input type="text" />
+                        <input
+                            id="txt_price_max"
+                            class="text-inputs price"
+                            type="text"
+                        />
                         <br />
                         <span>Author:</span>
-                        <input type="text" />
+                        <br />
+                        <input class="text-inputs" type="text" />
                         <br />
                         <span>Released year:</span>
-                        <input type="text" />
+                        <br />
+                        <input class="text-inputs" type="text" />
                         <br />
                         <span>Avaible:</span>
                         <input
@@ -57,15 +68,105 @@
                             value="No"
                         />
                          
-                        <label for="no">No</label>
-                        <button>Clear</button>
+                        <label for="no">No</label> <br />
+                        <button class="buttons">Clear</button>
+                        <br />
+                        <button class="buttons">Search</button>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
+                <div class="content color-back">
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
 
                     <!-- <div class="books">
                         <div class="one-book">
