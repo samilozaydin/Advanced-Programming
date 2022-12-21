@@ -30,7 +30,7 @@ body{
 }
 .block{
     width: 20rem;
-    height: 30rem;
+    height: 40rem;
     margin: 1.25rem;
     padding: 0.5rem;
 }
@@ -48,7 +48,7 @@ body{
     max-height: 40vh;
 }
 .one-book > img{
-    max-height: 5vh;
+    max-height: 15.625rem;
 }
 
 .inputs-header{
@@ -91,6 +91,17 @@ body{
     text-align: center;
     font-family: arial;
   }
+.author{
+    font-size: 20px;
+    margin:0px;
+}
+.text-left{
+    text-align: left;
+}
+.book-name{
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
 @media screen and (max-width : 600px) {
     .main-container{
         display: flex;
