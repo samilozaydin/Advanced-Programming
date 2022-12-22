@@ -120,4 +120,7 @@ body{
     .content{
         margin: 0rem;
     }
+    .block{
+        width: 18rem;
+    }
 }
