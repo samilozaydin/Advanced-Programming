@@ -1,154 +1,278 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Library Management</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
     </head>
     <body>
-        <div class="container">
-            <header>
-                <div class="page-top">
-                    <p class="page-top-content">Welcome to Library</p>
-                </div>
-            </header>
-            <main>
-                <div class="page-main">
-                    <div class="inputs">
-                        <div class="inputs-header">
-                            <p>Searching</p>
-                        </div>
-                        <div class="inputs-content">
-                            <span>Name:</span>
-                            <input type="text" />
-                            <br />
-                            <span>Type:</span>
-                            <select name="books" id="books">
-                                <option value="history">History</option>
-                                <option value="sci-fi">Sci-Fi</option>
-                                <option value="fantastic">Fantastic</option>
-                                <option value="love">Love</option>
-                            </select>
-                            <button>Search</button>
-                            <br />
-                            <span>Price:</span>
-                            <input type="text" />
-                            <span>-</span>
-                            <input type="text" />
-                            <br />
-                            <span>Author:</span>
-                            <input type="text" />
-                            <br />
-                            <span>Released year:</span>
-                            <input type="text" />
-                            <br />
-                            <span>Avaible:</span>
-                            <input
-                                type="radio"
-                                id="yes"
-                                name="isBookAvaible"
-                                value="Yes"
-                            />
-                              <label for="yes">Yes</label>  
-                            <input
-                                type="radio"
-                                id="no"
-                                name="isBookAvaible"
-                                value="No"
-                            />
-                             
-                            <label for="no">No</label>
-                            <button>Clear</button>
-                        </div>
+        <header>
+            <div class="navigator color-back">
+                <p>Library Management</p>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <div class="side color-back">
+                    <div class="inputs-header">
+                        <p class="color-back">Searching</p>
                     </div>
-                    <div class="books">
-                        <div class="inputs-header">
-                            <p>Books</p>
-                        </div>
-                        <div class="books-content wrap-books">
-                            <div class="one-book">
-                                <img
-                                    src="/w3images/jeans3.jpg"
-                                    alt="Denim Jeans"
-                                    style="width: 100%"
-                                />
-                                <h1>Tailored Jeans</h1>
-                                <p class="price">$19.99</p>
-                                <p>
-                                    Some text about the jeans. Super slim and
-                                    comfy lorem ipsum lorem jeansum. Lorem
-                                    jeamsun denim lorem jeansum.
-                                </p>
-                                <p><button>Add to Cart</button></p>
-                            </div>
-                            <div class="one-book">
-                                <img
-                                    src="/w3images/jeans3.jpg"
-                                    alt="Denim Jeans"
-                                    style="width: 100%"
-                                />
-                                <h1>Tailored Jeans</h1>
-                                <p class="price">$19.99</p>
-                                <p>
-                                    Some text about the jeans. Super slim and
-                                    comfy lorem ipsum lorem jeansum. Lorem
-                                    jeamsun denim lorem jeansum.
-                                </p>
-                                <p><button>Add to Cart</button></p>
-                            </div>
-                            <div class="one-book">
-                                <img
-                                    src="/w3images/jeans3.jpg"
-                                    alt="Denim Jeans"
-                                    style="width: 100%"
-                                />
-                                <h1>Tailored Jeans</h1>
-                                <p class="price">$19.99</p>
-                                <p>
-                                    Some text about the jeans. Super slim and
-                                    comfy lorem ipsum lorem jeansum. Lorem
-                                    jeamsun denim lorem jeansum.
-                                </p>
-                                <p><button>Add to Cart</button></p>
-                            </div>
-                            <div class="one-book">
-                                <img
-                                    src="/w3images/jeans3.jpg"
-                                    alt="Denim Jeans"
-                                    style="width: 100%"
-                                />
-                                <h1>Tailored Jeans</h1>
-                                <p class="price">$19.99</p>
-                                <p>
-                                    Some text about the jeans. Super slim and
-                                    comfy lorem ipsum lorem jeansum. Lorem
-                                    jeamsun denim lorem jeansum.
-                                </p>
-                                <p><button>Add to Cart</button></p>
-                            </div>
-                            <div class="one-book">
-                                <img
-                                    src="/w3images/jeans3.jpg"
-                                    alt="Denim Jeans"
-                                    style="width: 100%"
-                                />
-                                <h1>Tailored Jeans</h1>
-                                <p class="price">$19.99</p>
-                                <p>
-                                    Some text about the jeans. Super slim and
-                                    comfy lorem ipsum lorem jeansum. Lorem
-                                    jeamsun denim lorem jeansum.
-                                </p>
-                                <p><button>Add to Cart</button></p>
-                            </div>
-                        </div>
+                    <div class="inputs-content">
+                        <span>Name:</span>
+                        <br />
+                        <input id="name" class="text-inputs" type="text" />
+                        <br />
+                        <span>Type:</span>
+                        <select id="type" name="books" id="books">
+                            <option value="none">None</option>
+                            <option value="Roman">Roman</option>
+                            <option value="Romance">Romance</option>
+                            <option value="University">University</option>
+                            <option value="Philosophy">Philosophy</option>
+                        </select>
+                        <br /><br />
+                        <span>Price:</span>
+                        <br />
+                        <input
+                            id="txt_price_low"
+                            class="text-inputs price"
+                            type="text"
+                        />
+                        <span>-</span>
+                        <input
+                            id="txt_price_max"
+                            class="text-inputs price"
+                            type="text"
+                        />
+                        <br />
+                        <span>Author:</span>
+                        <br />
+                        <input id="author" class="text-inputs" type="text" />
+                        <br />
+                        <span>Released year:</span>
+                        <br />
+                        <input id="rel_year" class="text-inputs" type="text" />
+                        <br />
+                        <span>Language:</span>
+                        <select id="language" name="langs">
+                            <option value="none">None</option>
+                            <option value="tr">TR</option>
+                            <option value="eng">ENG</option>
+                        </select>
+                        <br /><br />
+                        <span>Avaible:</span>
+                        <input
+                            type="radio"
+                            id="yes"
+                            name="isBookAvaible"
+                            value="Yes"
+                        />
+                          <label for="yes">Yes</label>  
+                        <input
+                            type="radio"
+                            id="no"
+                            name="isBookAvaible"
+                            value="No"
+                        />
+                         
+                        <label for="no">No</label> <br />
+                        <button onclick="clean()" class="buttons">Clear</button>
+                        <br />
+                        <button class="buttons" onclick="search()">
+                            Search
+                        </button>
                     </div>
                 </div>
-            </main>
-            <footer>
-                <div class="page-footer"></div>
-            </footer>
-        </div>
+                <div id="books-place" class="content color-back">
+                    <!--   <div class="block color-back">
+                        <div class="one-book">
+                            <img src="wi_220.jfif" alt="Image for a book" />
+                            <h1 class="book-name">Ordinary Book</h1>
+                            <p class="author">Author Name</p>
+                            <p style="margin-bottom: 0px">$19.99</p>
+                            <div class="text-left">
+                                <table style="border-spacing: 1rem">
+                                    <tbody>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td>xxx</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Translator:</td>
+                                            <td>aaa</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Released Date:</td>
+                                            <td>www</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Language:</td>
+                                            <td>ddd</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Available:</td>
+                                            <td>ccc</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="buttons">Details</button>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+                    <div class="block color-back">
+                        <div class="one-book">
+                            <img
+                                src="#"
+                                alt="Image for a book"
+                                style="width: 100%"
+                            />
+                            <h1>Ordinary Book</h1>
+                            <p>$19.99</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Minus deleniti quae earum
+                                quisquam asperiores saepe laborum voluptatibus
+                                maxime ipsum ratione, tenetur, recusandae
+                                repellendus, iure soluta vel iusto culpa quis
+                                natus. Earum ex sapiente suscipit repellendus
+                                veniam reiciendis itaque nemo, praesentium
+                                exercitationem maiores? Sed itaque consectetur
+                                modi animi? Soluta, molestiae cupiditate!
+                            </p>
+                            <p><button class="buttons">Details</button></p>
+                        </div>
+                    </div>
+-->
+                    <!-- <div class="books">
+                        <div class="one-book">
+                            <img
+                                src="/w3images/jeans3.jpg"
+                                alt="Denim Jeans"
+                                style="width: 100%"
+                            />
+                            <h1>Tailored Jeans</h1>
+                            <p class="price">$19.99</p>
+                            <p>
+                                Some text about the jeans. Super slim and comfy
+                                lorem ipsum lorem jeansum. Lorem jeamsun denim
+                                lorem jeansum.
+                            </p>
+                            <p><button>Add to Cart</button></p>
+                        </div>
+                        <div class="one-book">
+                            <img
+                                src="/w3images/jeans3.jpg"
+                                alt="Denim Jeans"
+                                style="width: 100%"
+                            />
+                            <h1>Tailored Jeans</h1>
+                            <p class="price">$19.99</p>
+                            <p>
+                                Some text about the jeans. Super slim and comfy
+                                lorem ipsum lorem jeansum. Lorem jeamsun denim
+                                lorem jeansum.
+                            </p>
+                            <p><button>Add to Cart</button></p>
+                        </div>
+                        <div class="one-book">
+                            <img
+                                src="/w3images/jeans3.jpg"
+                                alt="Denim Jeans"
+                                style="width: 100%"
+                            />
+                            <h1>Tailored Jeans</h1>
+                            <p class="price">$19.99</p>
+                            <p>
+                                Some text about the jeans. Super slim and comfy
+                                lorem ipsum lorem jeansum. Lorem jeamsun denim
+                                lorem jeansum.
+                            </p>
+                            <p><button>Add to Cart</button></p>
+                        </div>
+                        <div class="one-book">
+                            <img
+                                src="/w3images/jeans3.jpg"
+                                alt="Denim Jeans"
+                                style="width: 100%"
+                            />
+                            <h1>Tailored Jeans</h1>
+                            <p class="price">$19.99</p>
+                            <p>
+                                Some text about the jeans. Super slim and comfy
+                                lorem ipsum lorem jeansum. Lorem jeamsun denim
+                                lorem jeansum.
+                            </p>
+                            <p><button>Add to Cart</button></p>
+                        </div>
+                        <div class="one-book">
+                            <img
+                                src="/w3images/jeans3.jpg"
+                                alt="Denim Jeans"
+                                style="width: 100%"
+                            />
+                            <h1>Tailored Jeans</h1>
+                            <p class="price">$19.99</p>
+                            <p>
+                                Some text about the jeans. Super slim and comfy
+                                lorem ipsum lorem jeansum. Lorem jeamsun denim
+                                lorem jeansum.
+                            </p>
+                            <p><button>Add to Cart</button></p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div id="Modal" class="modal">
+                <div id="modal-content" class="modal-content"></div>
+            </div>
+        </main>
+        <script src="./script.js"></script>
     </body>
 </html>

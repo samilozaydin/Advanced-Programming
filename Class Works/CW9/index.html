@@ -182,6 +182,32 @@
                     }
                     this.context.putImageData(id, 0, 0);
                 }
+                flipVertical() {
+                    let id = this.context.getImageData(0, 0, this.W, this.H);
+                    let data = id.data;
+                    for (let i = 0; i < this.W; i++) {
+                        for (let j = 0; j < this.H / 2; j++) {
+                            let index = i * 4 * (this.H - j);
+                            let mevcut = i * 4 * j;
+                            let temp = data[index];
+                            data[index] = data[mevcut]; // red
+                            data[mevcut] = temp;
+
+                            temp = data[index + 1];
+                            data[index + 1] = data[mevcut + 1]; // green
+                            data[mevcut + 1] = temp;
+
+                            temp = data[index + 2];
+                            data[index + 2] = data[mevcut + 2]; // blue
+                            data[mevcut + 2] = temp;
+
+                            temp = data[index + 3];
+                            data[index + 3] = data[mevcut + 3]; // alpha
+                            data[mevcut + 3] = temp;
+                        }
+                    }
+                    this.context.putImageData(id, 0, 0);
+                }
             }
 
             function init() {
