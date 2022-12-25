@@ -294,3 +294,13 @@ function giveBack(id) {
     });
 }
 createBooks();
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(registeration => {
+        // console.log("sw registered");
+        // console.log(registeration);
+    }).catch(error => {
+        // console.log("sw error");
+        // console.log(error);
+    });
+
+}
