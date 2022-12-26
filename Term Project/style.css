@@ -1,3 +1,84 @@
+
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%), 0 1px 6px 0 rgb(0 0 0 / 19%);
+    align-items: center;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #2980b9;
+}
+
+.dropdown {
+    position: relative;
+    flex: left;
+    margin-left: 0.5rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 20rem;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    overflow-y: auto;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+.dropdown a > img {
+    max-height: 5.90625rem;
+}
+.dropdown-book > a {
+    display: flex;
+    justify-content: space-between;
+}
+.dropdown_text {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.75rem;
+    text-align: center;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination{
+    margin: 0.5rem;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%), 0 1px 6px 0 rgb(0 0 0 / 19%);
+}
 body {
     margin: 1rem;
     padding: 0px;
@@ -140,87 +221,7 @@ body {
     width: 20rem;
     height: fit-content;
 }
-/**/
-.dropbtn {
-    background-color: #3498db;
-    color: white;
-    padding: 0.25rem 1rem 0.25rem 1rem;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 1rem;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%), 0 1px 6px 0 rgb(0 0 0 / 19%);
-    align-items: center;
-}
 
-.dropbtn:hover,
-.dropbtn:focus {
-    background-color: #2980b9;
-}
-
-.dropdown {
-    position: relative;
-    flex: left;
-    margin-left: 0.5rem;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 20rem;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    overflow-y: auto;
-}
-
-.dropdown a:hover {
-    background-color: #ddd;
-}
-
-.show {
-    display: block;
-}
-.dropdown a > img {
-    max-height: 5.90625rem;
-}
-.dropdown-book > a {
-    display: flex;
-    justify-content: space-between;
-}
-.dropdown_text {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0.75rem;
-    text-align: center;
-}
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-  }
-  
-.pagination a.active {
-    background-color: dodgerblue;
-    color: white;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
-.pagination{
-    margin: 0.5rem;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%), 0 1px 6px 0 rgb(0 0 0 / 19%);
-}
 @media screen and (max-width: 600px) {
     .main-container {
         display: flex;
