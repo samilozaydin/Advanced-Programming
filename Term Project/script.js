@@ -10,7 +10,6 @@ var books = fetch("./books.json")
     });
 var modal_content = document.getElementById("modal-content");
 var currentPage = 1;
-var searchID = 0;
 
 function createPaging(amount) {
     place.innerHTML = place.innerHTML +
@@ -29,7 +28,6 @@ function createSearchPaging(amount) {
         <a href="#" onclick="incrementSearch(${amount})">&raquo;</a>
     </div>
 `;
-    console.log(searchID)
 }
 function decrement() {
 
@@ -45,169 +43,23 @@ function increment(amount) {
     }
     clean();
 }
-function pageSearchingIncrement() {
-    let name = document.getElementById("name");
-    let author = document.getElementById("author");
-    let type = document.getElementById("type");
-    let low_price = document.getElementById("txt_price_low");
-    let high_price = document.getElementById("txt_price_max");
-    let rel_year = document.getElementById("rel_year");
-    let language = document.getElementById("language");
-    let availablity = document.getElementById("yes").checked ? true : false;
-    if (document.getElementById("yes").checked == false && document.getElementById("no").checked == false) {
-        availablity = 1;
 
-    }
-    var bookAmount = 0;
-    var lastID = 0;
-
-    place.innerHTML = "";
-    books.then(x => {
-        x.books.forEach(element => {
-            var obj = { translator: "", available: "", name: "" };
-            contentAvailablity(obj, element);
-
-            var searching = {
-                name: name,
-                author: author,
-                type: type,
-                low_price: low_price,
-                high_price: high_price,
-                rel_year: rel_year,
-                language: language,
-                availablity: availablity,
-                suitable: true
-            }
-            //console.log(element)
-            searchAvailability(searching, element);
-            if (searching.suitable) {
-                if (bookAmount < 6 && element.id > searchID) {
-                    displayBook(obj, element);
-                    bookAmount++;
-                    lastID = element.id;
-                }
-            }
-
-        });
-        while (lastID != searchID && x.books.length != searchID) {
-            searchID = searchID + 1;
-        }
-        if (bookAmount < 6) {
-            while (x.books.length != searchID)
-                searchID = searchID + 1;
-        }
-
-
-        createSearchPaging(x.books.length);
-    });
-}
-function pageSearchingDecrement() {
-    if (searchID == 0) {
-        return;
-    }
-    let name = document.getElementById("name");
-    let author = document.getElementById("author");
-    let type = document.getElementById("type");
-    let low_price = document.getElementById("txt_price_low");
-    let high_price = document.getElementById("txt_price_max");
-    let rel_year = document.getElementById("rel_year");
-    let language = document.getElementById("language");
-    let availablity = document.getElementById("yes").checked ? true : false;
-    if (document.getElementById("yes").checked == false && document.getElementById("no").checked == false) {
-        availablity = 1;
-
-    }
-    var bookAmount = 0;
-    var firstID = 0;
-    place.innerHTML = "";
-    books.then(x => {
-
-        while (searchID > 0) {
-            var obj = { translator: "", available: "", name: "" };
-            contentAvailablity(obj, x.books[searchID - 1]);
-
-            var searching = {
-                name: name,
-                author: author,
-                type: type,
-                low_price: low_price,
-                high_price: high_price,
-                rel_year: rel_year,
-                language: language,
-                availablity: availablity,
-                suitable: true
-            }
-            //console.log(element)
-            searchAvailability(searching, x.books[searchID - 1]);
-            if (searching.suitable) {
-                if (bookAmount < 6 && x.books[searchID - 1].id <= searchID) {
-                    displayBook(obj, x.books[searchID - 1]);
-                    bookAmount++;
-
-                }
-            }
-            if (bookAmount == 6) {
-                searchID--;
-                break;
-            }
-            searchID--;
-        }
-        /*    x.books.forEach(element => {
-                var obj = { translator: "", available: "", name: "" };
-                contentAvailablity(obj, element);
-    
-                var searching = {
-                    name: name,
-                    author: author,
-                    type: type,
-                    low_price: low_price,
-                    high_price: high_price,
-                    rel_year: rel_year,
-                    language: language,
-                    availablity: availablity,
-                    suitable: true
-                }
-                //console.log(element)
-                searchAvailability(searching, element);
-                if (searching.suitable) {
-                    if (bookAmount < 6 && element.id <= searchID) {
-                        displayBook(obj, element);
-                        if (bookAmount == 0) {
-                            firstID = element.id;
-                        }
-                        bookAmount++;
-                    }
-                }
-    
-            });
-            while (firstID != searchID && searchID > -1) {
-                searchID = searchID - 1;
-            }*/
-        //searchID--;// the first one can be displayed when user use increment paging.
-        console.log("decrement Search:" + searchID)
-        createSearchPaging(x.books.length);
-    });
-}
 function decrementSearch() {
 
-    if (currentPage == 1) {
-        return;
-    }
     if (currentPage > 1) {
         currentPage = currentPage - 1;
     }
-    if (searchID > 0) {
-        pageSearchingDecrement();
-    }
+
+    search();
+
 }
 
 function incrementSearch(amount) {
 
-    if (searchID == amount) {
-        return;
+    if (amount != undefined && currentPage * 6 < amount) {
+        currentPage = currentPage + 1;
     }
-    currentPage = currentPage + 1;
-    pageSearchingIncrement();
+    search();
 
 }
 function createBooks() {
@@ -291,7 +143,10 @@ function displayBook(obj, element) {
         </div >
     </div > `
 }
-
+function searchButton() {
+    currentPage = 1;
+    search();
+}
 function search() {
     let name = document.getElementById("name");
     let author = document.getElementById("author");
@@ -305,10 +160,7 @@ function search() {
         availablity = 1;
 
     }
-    currentPage = 1;
     var bookAmount = 0;
-    var lastID = 0;
-    searchID = 0;
 
     place.innerHTML = "";
     books.then(x => {
@@ -330,19 +182,17 @@ function search() {
             //console.log(element)
             searchAvailability(searching, element);
             if (searching.suitable) {
-                if (bookAmount < 6 && element.id > searchID) {
+                if (bookAmount < 6 * currentPage && bookAmount >= 6 * (currentPage - 1)) {
+
                     displayBook(obj, element);
-                    bookAmount++;
-                    lastID = element.id;
                 }
+                bookAmount++;
+
             }
 
         });
-        while (lastID != searchID && x.books.length != searchID) {
-            searchID = searchID + 1;
-        }
 
-        createSearchPaging(x.books.length);
+        createSearchPaging(bookAmount);
     });
 
 }
@@ -538,7 +388,7 @@ function drop_down_list() {
 
 function displayBorrowedBook(obj, element) {
     borrowed.innerHTML = borrowed.innerHTML + `
-    <div class="dropdown-book">
+    <div class="dropdown-book" onclick="book_detail(${element.id})">
         <a href="#">
             <img
                 src="${element.Image}"
