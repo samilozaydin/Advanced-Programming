@@ -1,2 +1,2 @@
 # Advanced-Programming
- This repository is created for advanced progmming class
+ This repository is created for advanced programming class
