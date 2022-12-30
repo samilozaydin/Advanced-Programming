@@ -1,4 +1,3 @@
-
 var place = document.getElementById("books-place");
 var borrowed = document.getElementById("myDropdown");
 var paging = document.getElementById("pagination");
